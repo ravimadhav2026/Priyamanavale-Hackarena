@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#b71c1c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Priyamanavale · Rural Women's Voice Welfare Concierge</title>
+
+<!-- Universal Typography -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@600;700;800;900&family=Noto+Sans+Devanagari:wght@600;700;800;900&family=Noto+Sans+Gujarati:wght@600;700;800;900&family=Noto+Sans+Kannada:wght@600;700;800;900&family=Noto+Sans+Malayalam:wght@600;700;800;900&family=Noto+Sans+Tamil:wght@600;700;800;900&family=Noto+Sans+Telugu:wght@600;700;800;900&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary-red: #b71c1c;
+  --primary-red-shadow: #7f0000;
+  --primary-crimson: #991b1b;
+  --accent-gold: #f59e0b;
+  --accent-gold-shadow: #b45309;
+  --pink-blush: #fff1f2;
+  --pink-border: #fecdd3;
+  --success-green: #15803d;
+  --success-green-shadow: #14532d;
+  --warn-orange: #ea580c;
+  --warn-orange-shadow: #9a3412;
+  --danger-red: #dc2626;
+  --danger-red-shadow: #7f1d1d;
+  --text-dark: #270724;
+  --text-sub: #78716c;
+  --surface-white: #ffffff;
+  --card-radius: 20px;
+  --font-stack: 'Nunito', 'Noto Sans Tamil', 'Noto Sans Malayalam', 'Noto Sans Telugu', 
+                'Noto Sans Kannada', 'Noto Sans Devanagari', 'Noto Sans Bengali', 
+                'Noto Sans Gujarati', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
+html, body {
+  margin: 0; padding: 0; width: 100%; height: 100%;
+  background: #fdf2f2; font-family: var(--font-stack); color: var(--text-dark);
+  user-select: none; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+
+#app-viewport {
+  width: 100%; max-width: 500px; min-height: 100vh; margin: 0 auto;
+  background: linear-gradient(180deg, #fff5f5 0%, #ffffff 100%);
+  position: relative; display: flex; flex-direction: column;
+  box-shadow: 0 0 50px rgba(183, 28, 28, 0.08); contain: layout style;
+}
+
+.duo-tactile-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-weight: 900; letter-spacing: 0.3px; cursor: pointer; border: 0;
+  border-radius: 18px; transition: transform 0.08s ease, box-shadow 0.08s ease; will-change: transform;
+}
+.duo-tactile-btn:active { transform: translateY(3px) !important; box-shadow: none !important; }
+
+/* SCREEN 1: ONBOARDING INTRO */
+#view-intro {
+  display: flex; flex-direction: column; min-height: 100vh;
+  padding: 24px 20px 20px 20px; justify-content: space-between; text-align: center;
+  background: radial-gradient(circle at 50% 12%, #ffe4e6 0%, #fff5f5 75%);
+}
+.intro-vector-hero {
+  width: 100%; max-width: 340px; margin: 8px auto 0 auto; border-radius: 26px;
+  overflow: hidden; box-shadow: 0 14px 34px rgba(183, 28, 28, 0.16);
+  border: 3.5px solid var(--surface-white); background: var(--surface-white); transform: translateZ(0);
+}
+.intro-vector-svg { width: 100%; height: 215px; display: block; }
+.intro-typography { margin-top: 14px; display: flex; flex-direction: column; align-items: center; }
+.intro-title-text { margin: 4px 0 2px 0; font-size: 30px; font-weight: 900; color: var(--primary-red); letter-spacing: -0.6px; }
+.intro-subtitle-text { font-size: 15.5px; font-weight: 800; color: var(--accent-gold-shadow); line-height: 1.35; }
+.intro-badges-cluster { display: flex; gap: 8px; margin: 14px 0 10px 0; justify-content: center; flex-wrap: wrap; }
+.intro-pill-badge {
+  background: var(--surface-white); border: 1.5px solid var(--pink-border);
+  padding: 6px 13px; border-radius: 999px; font-size: 12.5px; font-weight: 800;
+  color: var(--primary-crimson); display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.intro-lead-paragraph { font-size: 14px; font-weight: 700; color: var(--text-sub); line-height: 1.5; margin: 4px 0 0 0; max-width: 340px; }
+.btn-onboarding-start { width: 100%; padding: 17px; background: var(--primary-red); color: var(--surface-white); font-size: 19px; box-shadow: 0 5px 0 var(--primary-red-shadow); }
+
+/* SCREEN 2: LANGUAGE SELECTION */
+#view-language { display: none; flex-direction: column; min-height: 100vh; padding: 20px 18px; justify-content: space-between; background: #fffafa; }
+.language-top-bar { display: flex; align-items: center; justify-content: space-between; }
+.btn-nav-back { background: var(--surface-white); border: 1.5px solid var(--pink-border); border-radius: 14px; padding: 7px 14px; font-size: 13.5px; font-weight: 900; color: var(--primary-red); cursor: pointer; }
+.language-headline { margin: 12px 0 2px 0; font-size: 24px; font-weight: 900; color: var(--primary-red); text-align: center; }
+.language-subheadline { font-size: 13.5px; font-weight: 800; color: var(--accent-gold-shadow); text-align: center; }
+.language-tile-grid { display: flex; flex-direction: column; gap: 10px; margin: 14px 0; max-height: 68vh; overflow-y: auto; padding-right: 4px; }
+.language-tile-grid::-webkit-scrollbar { width: 4px; }
+.language-tile-grid::-webkit-scrollbar-thumb { background: #fca5a5; border-radius: 10px; }
+.language-choice-card {
+  background: var(--surface-white); border: 2px solid var(--pink-border); border-bottom: 4px solid var(--pink-border);
+  border-radius: var(--card-radius); padding: 12px 18px; display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; position: relative; overflow: hidden; transition: transform 0.08s ease;
+}
+.language-choice-card:active { transform: translateY(3px); border-bottom-width: 2px; }
+.script-watermark-render { position: absolute; right: 50px; top: 50%; transform: translateY(-50%); font-size: 46px; font-weight: 900; color: #fecdd3; opacity: 0.55; pointer-events: none; line-height: 1; }
+.language-card-meta { display: flex; align-items: center; gap: 14px; text-align: left; z-index: 1; }
+.language-avatar-badge { width: 44px; height: 44px; border-radius: 14px; background: var(--pink-blush); border: 1.5px solid var(--pink-border); display: flex; align-items: center; justify-content: center; font-size: 21px; font-weight: 900; color: var(--primary-red); }
+.language-label-native { font-size: 18px; font-weight: 900; color: #1c1917; line-height: 1.2; }
+.language-label-latin { font-size: 12.5px; font-weight: 700; color: var(--text-sub); }
+.language-card-chevron { font-size: 20px; color: var(--primary-red); font-weight: 900; z-index: 1; }
+
+/* SCREEN 3: MAIN STAGE */
+#view-stage { display: none; flex-direction: column; min-height: 100vh; padding: 14px; justify-content: space-between; }
+.stage-header-bar { display: flex; align-items: center; justify-content: space-between; padding-bottom: 4px; }
+.stage-progress-track { flex: 1; height: 12px; background: #ffe4e6; border-radius: 20px; margin: 0 10px; overflow: hidden; border: 1.5px solid var(--pink-border); }
+.stage-progress-fill { height: 100%; width: 18%; background: linear-gradient(90deg, var(--accent-gold), var(--primary-red)); border-radius: 20px; transition: width 0.35s ease; }
+
+.mascot-scenic-stage { display: flex; flex-direction: column; align-items: center; margin: 2px 0; position: relative; }
+.mascot-pedestal-shadow { width: 165px; height: 16px; background: radial-gradient(ellipse at center, rgba(183, 28, 28, 0.22) 0%, rgba(255, 245, 245, 0) 70%); margin-top: -8px; border-radius: 50%; }
+.mascot-anchor-box { width: 140px; height: 165px; position: relative; }
+
+.interactive-speech-bubble {
+  width: 100%; background: var(--surface-white); border: 2px solid var(--pink-border); border-bottom: 4px solid var(--pink-border);
+  border-radius: 22px; padding: 14px 16px; position: relative; margin-top: 6px; box-shadow: 0 4px 16px rgba(183, 28, 28, 0.08);
+}
+.speech-bubble-text { font-size: 16px; line-height: 1.45; font-weight: 900; color: var(--text-dark); }
+.speech-bubble-replay-row { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 13px; font-weight: 800; color: var(--primary-red); cursor: pointer; }
+
+/* Visual Document Cards */
+.document-cards-rack { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 8px 0; }
+.document-item-card {
+  background: var(--surface-white); border: 2px solid #fee2e2; border-bottom: 3.5px solid #fee2e2;
+  border-radius: 15px; padding: 6px 3px 8px 3px; text-align: center; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.document-item-card.state-has { border-color: #22c55e; border-bottom-color: #15803d; background: #f0fdf4; }
+.document-item-card.state-lacks { border-color: #ef4444; border-bottom-color: #b91c1c; background: #fef2f2; }
+.document-item-card.state-dimmed { opacity: 0.32; }
+
+.doc-thumbnail-frame {
+  width: 44px; height: 34px; margin: 2px auto 4px auto; border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06); position: relative; overflow: hidden;
+}
+.frame-ration { background: #fee2e2; border-color: #f87171; }
+.frame-id { background: #e0f2fe; border-color: #38bdf8; }
+.frame-bank { background: #fef3c7; border-color: #fbbf24; }
+.frame-photo { background: #f3e8ff; border-color: #c084fc; }
+
+.document-caption { font-size: 10.5px; font-weight: 900; margin-top: 1px; line-height: 1.2; }
+.document-status-glyph { font-size: 13px; font-weight: 900; margin-top: 3px; }
+
+#dispatch-maps-banner {
+  display: none; background: #fff7ed; border: 2px solid #fed7aa; border-bottom: 4px solid var(--warn-orange);
+  border-radius: 16px; padding: 10px 12px; align-items: center; justify-content: space-between; margin: 4px 0;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.12);
+}
+.dispatch-banner-meta { display: flex; align-items: center; gap: 8px; }
+.dispatch-banner-icon { font-size: 28px; }
+.dispatch-banner-copy { font-size: 12px; font-weight: 900; color: var(--warn-orange-shadow); line-height: 1.3; }
+.btn-open-navigation-route {
+  background: var(--warn-orange); color: var(--surface-white); border: 0; border-radius: 12px;
+  padding: 8px 12px; font-size: 12px; font-weight: 900; text-decoration: none; white-space: nowrap; box-shadow: 0 3px 0 var(--warn-orange-shadow);
+}
+
+/* 21 Schemes Matrix */
+.scheme-catalog-container { display: flex; flex-direction: column; gap: 5px; margin-top: 2px; }
+.catalog-section-label { font-size: 12px; font-weight: 900; color: var(--primary-red); text-transform: uppercase; }
+.scheme-cards-scroll-matrix {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; max-height: 140px; overflow-y: auto; padding-right: 3px;
+}
+.scheme-cards-scroll-matrix::-webkit-scrollbar { width: 4px; }
+.scheme-cards-scroll-matrix::-webkit-scrollbar-thumb { background: #fca5a5; border-radius: 10px; }
+
+.scheme-entry-card {
+  background: var(--surface-white); border: 2px solid var(--pink-border); border-bottom: 3px solid var(--pink-border);
+  border-radius: 14px; padding: 8px; cursor: pointer; display: flex; flex-direction: column; gap: 2px; transition: transform 0.08s ease;
+}
+.scheme-entry-card.active-selected { background: #fff1f2; border-color: var(--primary-red); border-bottom-color: var(--primary-red-shadow); }
+.scheme-entry-header { display: flex; align-items: center; gap: 6px; }
+.scheme-entry-icon { font-size: 20px; }
+.scheme-entry-name { font-size: 12px; font-weight: 900; color: #1c1917; }
+.scheme-entry-summary { font-size: 10px; font-weight: 800; color: var(--primary-red); }
+
+#recording-control-tray {
+  display: none; flex-direction: column; background: var(--surface-white); border: 2.5px solid var(--warn-orange);
+  border-radius: 18px; padding: 12px; margin: 6px 0; box-shadow: 0 4px 16px rgba(234, 88, 12, 0.15);
+}
+.tray-status-strip { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.tray-pulse-indicator { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 900; color: var(--warn-orange); }
+.tray-pulsing-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--warn-orange); }
+.tray-dictation-stream { min-height: 40px; max-height: 70px; overflow-y: auto; font-size: 14px; font-weight: 800; color: #431407; padding: 8px; background: #fff7ed; border-radius: 12px; line-height: 1.4; margin-bottom: 10px; }
+.tray-buttons-row { display: flex; gap: 10px; }
+.btn-tray-action { flex: 1; padding: 12px; font-size: 14px; }
+.btn-action-submit { background: var(--success-green); color: var(--surface-white); box-shadow: 0 3px 0 var(--success-green-shadow); }
+.btn-action-pause { background: var(--accent-gold); color: var(--surface-white); box-shadow: 0 3px 0 var(--accent-gold-shadow); }
+.btn-action-cancel { background: var(--danger-red); color: var(--surface-white); box-shadow: 0 3px 0 var(--danger-red-shadow); }
+
+.stage-action-area { display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding: 4px 0 8px 0; }
+.central-mic-wrapper { display: flex; justify-content: center; }
+.btn-central-microphone {
+  width: 68px; height: 68px; border-radius: 50%; background: var(--primary-red); box-shadow: 0 4px 0 var(--primary-red-shadow);
+  border: 0; color: var(--surface-white); font-size: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+}
+.btn-central-microphone:active { transform: translateY(3px); box-shadow: none; }
+.btn-choice-affirm { background: var(--success-green); color: var(--surface-white); box-shadow: 0 4px 0 var(--success-green-shadow); padding: 14px; font-size: 16px; }
+.btn-choice-negate { background: var(--danger-red); color: var(--surface-white); box-shadow: 0 4px 0 var(--danger-red-shadow); padding: 14px; font-size: 16px; }
+.btn-choice-forward { background: var(--warn-orange); color: var(--surface-white); box-shadow: 0 4px 0 var(--warn-orange-shadow); padding: 14px; font-size: 16px; }
+.btn-choice-reset { background: var(--surface-white); color: var(--primary-red); border: 2px solid var(--pink-border); box-shadow: 0 4px 0 var(--pink-border); padding: 14px; font-size: 16px; }
+</style>
+</head>
+
+<body>
+<div id="app-viewport">
+
+  <!-- VIEW 1: ONBOARDING INTRO -->
+  <section id="view-intro">
+    <div>
+      <div class="intro-vector-hero">
+        <svg class="intro-vector-svg" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="skyHue" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fed7aa"/>
+              <stop offset="60%" stop-color="#ffedd5"/>
+              <stop offset="100%" stop-color="#fef08a"/>
+            </linearGradient>
+            <linearGradient id="fieldHue" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#86efac"/>
+              <stop offset="100%" stop-color="#22c55e"/>
+            </linearGradient>
+          </defs>
+          <rect width="320" height="150" fill="url(#skyHue)"/>
+          <circle cx="260" cy="65" r="32" fill="#fbbf24" opacity="0.6"/>
+          <path d="M 0 140 Q 60 115 130 135 T 260 120 T 320 135 L 320 200 L 0 200 Z" fill="url(#fieldHue)"/>
+          <polygon points="40,118 70,95 100,118" fill="#b45309"/>
+          <rect x="48" y="118" width="44" height="25" fill="#fef3c7"/>
+          <rect x="64" y="127" width="12" height="16" fill="#78350f"/>
+          <g transform="translate(145, 30)">
+            <path d="M 20 150 Q 55 105 90 150 Z" fill="#b71c1c"/>
+            <path d="M 32 120 Q 55 102 78 120 L 82 150 L 28 150 Z" fill="#991b1b"/>
+            <path d="M 30 118 Q 55 132 80 118" stroke="#f59e0b" stroke-width="3.5" fill="none"/>
+            <ellipse cx="55" cy="72" rx="28" ry="32" fill="#fbd38d"/>
+            <circle cx="55" cy="38" r="18" fill="#1c1917"/>
+            <path d="M 26 68 C 22 40 88 40 84 68 C 76 50 34 50 26 68 Z" fill="#1c1917"/>
+            <circle cx="38" cy="38" r="4" fill="#fef08a" stroke="#ca8a04"/>
+            <circle cx="46" cy="31" r="4" fill="#ffffff" stroke="#cbd5e1"/>
+            <circle cx="55" cy="28" r="4.5" fill="#fef08a" stroke="#ca8a04"/>
+            <circle cx="64" cy="31" r="4" fill="#ffffff" stroke="#cbd5e1"/>
+            <circle cx="72" cy="38" r="4" fill="#fef08a" stroke="#ca8a04"/>
+            <circle cx="55" cy="64" r="2.8" fill="#b91c1c"/>
+            <ellipse cx="44" cy="72" rx="3.8" ry="4.5" fill="#1c1917"/>
+            <ellipse cx="66" cy="72" rx="3.8" ry="4.5" fill="#1c1917"/>
+            <path d="M 48 85 Q 55 92 62 85" stroke="#991b1b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M 50 118 C 46 108 64 108 60 118 Z" fill="#fbd38d" stroke="#d97706"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="intro-typography">
+        <h1 class="intro-title-text">Welcome to Priyamanavale</h1>
+        <div class="intro-subtitle-text">Empowering Every Mother & Homemaker</div>
+        
+        <div class="intro-badges-cluster">
+          <span class="intro-pill-badge">🗣️ Voice First</span>
+          <span class="intro-pill-badge">⚡ Zero Forms</span>
+          <span class="intro-pill-badge">🏛️ 20+ Schemes</span>
+        </div>
+
+        <p class="intro-lead-paragraph">
+          No English or digital skills required. Speak naturally to your trusted AI companion and unlock every welfare benefit, subsidy, education grant, and loan designed for you.
+        </p>
+      </div>
+    </div>
+
+    <div class="intro-actions">
+      <button class="duo-tactile-btn btn-onboarding-start" onclick="Router.navigate('view-language')">
+        <span>Get Started ➔</span>
+      </button>
+      <div style="font-size:12px; font-weight:800; color:#a8a29e;">
+        Designed for Rural India · Built with Dignity
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW 2: LANGUAGE SELECTION -->
+  <section id="view-language">
+    <div>
+      <div class="language-top-bar">
+        <button class="btn-nav-back" onclick="Router.navigate('view-intro')">⬅ Back</button>
+        <span style="font-size:18px;">🌸</span>
+      </div>
+      <h2 class="language-headline">Choose Your Language</h2>
+      <div class="language-subheadline">Select your mother tongue to continue</div>
+    </div>
+
+    <div class="language-tile-grid" id="container-language-tiles"></div>
+
+    <div style="font-size:12px; font-weight:800; color:#a8a29e; text-align:center;">
+      Touch any language card to speak with Priyamanavale
+    </div>
+  </section>
+
+  <!-- VIEW 3: MAIN STAGE -->
+  <section id="view-stage">
+    <div class="stage-header-bar">
+      <button class="btn-nav-back" onclick="Router.navigate('view-language')">
+        <span>🌐</span> <span id="lbl-active-lang-nav">தமிழ்</span>
+      </button>
+      <div class="stage-progress-track">
+        <div id="bar-stage-progress" class="stage-progress-fill"></div>
+      </div>
+      <span style="font-size:18px;">✨</span>
+    </div>
+
+    <!-- 100% Steady Mascot -->
+    <div class="mascot-scenic-stage">
+      <div class="mascot-anchor-box">
+        <svg viewBox="0 0 140 165" width="100%" height="100%">
+          <g>
+            <path d="M 28 160 Q 70 115 112 160 L 115 165 L 25 165 Z" fill="#b71c1c"/>
+            <path d="M 44 125 Q 70 108 96 125 L 100 165 L 40 165 Z" fill="#991b1b"/>
+            <path d="M 42 122 Q 70 138 98 122" stroke="#f59e0b" stroke-width="4.5" fill="none"/>
+            <ellipse cx="70" cy="72" rx="35" ry="40" fill="#fbd38d"/>
+            <circle cx="70" cy="30" r="22" fill="#1c1917"/>
+            <path d="M 33 68 C 30 32 110 32 107 68 C 96 46 44 46 33 68 Z" fill="#1c1917"/>
+            <circle cx="48" cy="32" r="5" fill="#fef08a" stroke="#ca8a04" stroke-width="1.2"/>
+            <circle cx="58" cy="24" r="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+            <circle cx="70" cy="21" r="5.5" fill="#fef08a" stroke="#ca8a04" stroke-width="1.2"/>
+            <circle cx="82" cy="24" r="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+            <circle cx="92" cy="32" r="5" fill="#fef08a" stroke="#ca8a04" stroke-width="1.2"/>
+            <circle cx="70" cy="61" r="3.6" fill="#b91c1c"/>
+            <circle cx="70" cy="61" r="4.8" stroke="#f59e0b" stroke-width="0.9" fill="none"/>
+            <g>
+              <ellipse cx="56" cy="72" rx="5.2" ry="6.2" fill="#1c1917"/>
+              <circle cx="58" cy="70" r="2" fill="#ffffff"/>
+              <ellipse cx="84" cy="72" rx="5.2" ry="6.2" fill="#1c1917"/>
+              <circle cx="86" cy="70" r="2" fill="#ffffff"/>
+            </g>
+            <path d="M 50 63 Q 56 60 62 63" stroke="#1c1917" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M 78 63 Q 84 60 90 63" stroke="#1c1917" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M 61 88 Q 70 96 79 88" stroke="#991b1b" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <circle cx="34" cy="77" r="3.8" fill="#f59e0b"/>
+            <circle cx="106" cy="77" r="3.8" fill="#f59e0b"/>
+            <g>
+              <path d="M 64 122 C 60 110 80 110 76 122 Z" fill="#fbd38d" stroke="#d97706" stroke-width="1.5"/>
+              <circle cx="70" cy="116" r="3" fill="#f59e0b"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="mascot-pedestal-shadow"></div>
+
+      <div class="interactive-speech-bubble">
+        <div id="lbl-dialogue-output" class="speech-bubble-text">...</div>
+        <div class="speech-bubble-replay-row" onclick="SpeechEngine.replayLast()">
+          <span>🔊</span> <span id="lbl-replay-caption">Listen Again</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Document Rack -->
+    <div class="document-cards-rack" id="container-document-rack"></div>
+
+    <!-- Google Maps Dispatch Banner -->
+    <div id="dispatch-maps-banner">
+      <div class="dispatch-banner-meta">
+        <span class="dispatch-banner-icon">📍</span>
+        <div class="dispatch-banner-copy" id="lbl-maps-directions-copy">Visit nearest center</div>
+      </div>
+      <a id="btn-maps-action-link" class="btn-open-navigation-route" href="#" target="_blank" rel="noopener">🗺️ Open Map</a>
+    </div>
+
+    <!-- Schemes Matrix (21 Schemes) -->
+    <div class="scheme-catalog-container">
+      <div class="catalog-section-label" id="lbl-schemes-header-title">Government Schemes for Women</div>
+      <div class="scheme-cards-scroll-matrix" id="container-schemes-matrix"></div>
+    </div>
+
+    <!-- Live Recording Tray -->
+    <div id="recording-control-tray">
+      <div class="tray-status-strip">
+        <div class="tray-pulse-indicator">
+          <span class="tray-pulsing-dot"></span>
+          <span id="lbl-recording-status">Listening to you...</span>
+        </div>
+      </div>
+      <div id="lbl-live-transcript-stream" class="tray-dictation-stream">...</div>
+      <div class="tray-buttons-row">
+        <button class="duo-tactile-btn btn-tray-action btn-action-submit" onclick="DictationService.stopAndSubmit()">
+          <span>⏹️</span> <span id="lbl-stop-submit-caption">Stop & Submit</span>
+        </button>
+        <button class="duo-tactile-btn btn-tray-action btn-action-pause" id="btn-toggle-pause-dictation" onclick="DictationService.togglePause()">
+          <span id="glyph-pause-dictation">⏸️</span> <span id="lbl-pause-dictation-caption">Pause</span>
+        </button>
+        <button class="duo-tactile-btn btn-tray-action btn-action-cancel" onclick="DictationService.abortSession()">
+          <span>❌</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Action Area -->
+    <div class="stage-action-area">
+      <div class="central-mic-wrapper" id="container-central-mic">
+        <button class="btn-central-microphone" aria-label="Press to Speak" onclick="DictationService.initSession()">🎤</button>
+      </div>
+      <div id="container-contextual-actions"></div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/**
+ * ------------------------------------------------------------------
+ * DATA REPOSITORY: 8 REGIONAL LANGUAGES
+ * ------------------------------------------------------------------
+ */
+const I18N_LOCALES = {
+  ta: {
+    name: 'தமிழ்', sub: 'Tamil', scriptChar: 'அ', bcp47: 'ta-IN', gtts: 'ta', englishName: 'Tamil',
+    replay: 'மீண்டும் கேட்க', schemesHeader: 'மகளிர் அரசு நலத்திட்டங்கள் (21 திட்டங்கள்)',
+    yesBtn: 'ஆம், உள்ளது', noBtn: 'இல்லை', nextBtn: 'அடுத்து', selectSchemePrompt: 'மேலே ஒரு திட்டத்தை தொடுங்கள்', restartBtn: 'வேறு திட்டம் பார்க்க',
+    listeningNotice: 'நீங்கள் பேசுவதை கேட்கிறேன்...', pausedNotice: 'பேசுவது தற்காலிகமாக நிறுத்தப்பட்டுள்ளது',
+    submitNotice: 'பேசி முடித்தேன்', pauseNotice: 'நிறுத்து', resumeNotice: 'தொடர்க',
+    greeting: 'வணக்கம் சகோதரி! நான் பிரியமானவளே. 20-க்கும் மேற்பட்ட அரசு நலத்திட்டங்கள் மற்றும் ஆவண விவரங்கள் என்னிடம் உள்ளன. எதைப்பற்றி வேண்டுமானாலும் பேசுங்கள்.',
+    queryPrompt: 'உங்களிடம் {d} இருக்கிறதா?',
+    missingDocNotice: '{d} இல்லையா? கவலை வேண்டாம்! உடனே {p} செல்லுங்கள். கீழே வரைபடத்தை தொட்டு வழியைப் பாருங்கள்.',
+    documents: ['ரேஷன் அட்டை', 'அடையாள அட்டை', 'வங்கி புத்தகம்', 'புகைப்படம்'],
+    places: ['ரேஷன் அலுவலகம் அல்லது இ-சேவை மையத்துக்கு', 'ஆதார் மையம் அல்லது தபால் நிலையத்துக்கு (இலவசம்)', 'வங்கி அல்லது தபால் நிலையத்துக்கு (ஜீரோ பேலன்ஸ்)', 'அருகிலுள்ள புகைப்பட நிலையத்துக்கு'],
+    mapQueries: ['nearest ration office civil supplies', 'nearest Aadhaar enrollment centre post office', 'nearest bank branch post office', 'nearest photo studio'],
+    allReadyPrompt: 'அருமை! இந்த ஆவணங்களை எடுத்துக்கொண்டு கிராம பஞ்சாயத்து அல்லது இ-சேவை மையத்துக்குச் செல்லுங்கள்.',
+    someMissingPrompt: 'முதலில் விடுபட்ட ஆவணங்களை தயார் செய்யுங்கள், பிறகு பஞ்சாயத்து அலுவலகத்துக்குச் செல்லுங்கள்.'
+  },
+  en: {
+    name: 'English', sub: 'English', scriptChar: 'A', bcp47: 'en-IN', gtts: 'en', englishName: 'English',
+    replay: 'Listen Again', schemesHeader: 'Government Schemes for Women (21 Schemes)',
+    yesBtn: 'YES, I HAVE', noBtn: 'NO, I LACK', nextBtn: 'Continue', selectSchemePrompt: 'Tap a scheme above', restartBtn: 'Choose Another Scheme',
+    listeningNotice: 'Listening to you...', pausedNotice: 'Dictation paused',
+    submitNotice: 'Stop & Submit', pauseNotice: 'Pause', resumeNotice: 'Resume',
+    greeting: 'Hello sister! I am Priyamanavale. I support over 20 government welfare schemes for women. Speak to me about any scheme or document doubt.',
+    queryPrompt: 'Do you have your {d}?',
+    missingDocNotice: 'Do not have {d}? Do not worry! Please visit {p}. Tap the map below for direct directions.',
+    documents: ['Ration Card', 'Identity Card', 'Bank Passbook', 'Passport Photo'],
+    places: ['Ration office or e-Seva CSC centre', 'Aadhaar centre or post office (Free)', 'Bank or Post office (Zero-balance account)', 'Nearby photo studio'],
+    mapQueries: ['nearest ration office civil supplies', 'nearest Aadhaar centre post office', 'nearest nationalised bank branch', 'nearest photo studio'],
+    allReadyPrompt: 'Everything is ready! Carry these papers and visit your local Panchayat office or CSC centre.',
+    someMissingPrompt: 'First arrange the missing documents, then visit your local Panchayat office.'
+  },
+  ml: {
+    name: 'മലയാളം', sub: 'Malayalam', scriptChar: 'അ', bcp47: 'ml-IN', gtts: 'ml', englishName: 'Malayalam',
+    replay: 'വീണ്ടും കേൾക്കുക', schemesHeader: 'വനിതാ ക്ഷേമ പദ്ധതികൾ (21 പദ്ധതികൾ)',
+    yesBtn: 'ഉണ്ട്, ഉണ്ട്', noBtn: 'ഇല്ല', nextBtn: 'അടുത്തത്', selectSchemePrompt: 'മുകളിൽ ഒരു പദ്ധതി തിരഞ്ഞെടുക്കൂ', restartBtn: 'മറ്റൊരു പദ്ധതി നോക്കുക',
+    listeningNotice: 'ഞാൻ ശ്രദ്ധിക്കുന്നു...', pausedNotice: 'താല്ക്കാലികമായി നിർത്തി',
+    submitNotice: 'പൂർത്തിയായി', pauseNotice: 'നിർത്തൂ', resumeNotice: 'തുടരൂ',
+    greeting: 'നമസ്കാരം ചേച്ചി! ഞാൻ പ്രിയമാനവളെ. വനിതകൾക്കായുള്ള 20 ലധികം സർക്കാർ പദ്ധതികളെക്കുറിച്ച് ചോദിക്കാം, ഞാൻ വ്യക്തമാക്കിത്തരാം.',
+    queryPrompt: 'കയ്യിൽ {d} ഉണ്ടോ?',
+    missingDocNotice: '{d} ഇല്ലേ? വിഷമിക്കേണ്ട! ഉടൻ {p} പോകൂ. താഴെയുള്ള മാപ്പ് നോക്കി വഴി കാണൂ.',
+    documents: ['റേഷൻ കാർഡ്', 'തിരിച്ചറിയൽ കാർഡ്', 'ബാങ്ക് പാസ്ബുക്ക്', 'പാസ്‌പോർട്ട് ഫോട്ടോ'],
+    places: ['റേഷൻ കടയിലോ അക്ഷയ കേന്ദ്രത്തിലോ', 'ആധാർ കേന്ദ്രത്തിലോ പോസ്റ്റ് ഓഫീസിലോ (സൗജന്യം)', 'ബാങ്കിലോ പോസ്റ്റ് ഓഫീസിലോ (സീറോ ബാലൻസ്)', 'അടുത്തുള്ള ഫോട്ടോ സ്റ്റുഡിയോയിൽ'],
+    mapQueries: ['nearest ration shop Akshaya centre', 'nearest Aadhaar enrolment centre post office', 'nearest bank branch post office', 'nearest photo studio'],
+    allReadyPrompt: 'എല്ലാം തയ്യാറായി! ഈ രേഖകളുമായി പഞ്ചായത്ത് ഓഫീസിലോ അക്ഷയ കേന്ദ്രത്തിലോ പോകൂ.',
+    someMissingPrompt: 'ആദ്യം ഇല്ലാത്ത രേഖകൾ ശരിയാക്കൂ, എന്നിട്ട് പഞ്ചായത്തിലേക്ക് പോകൂ.'
+  },
+  hi: {
+    name: 'हिंदी', sub: 'Hindi', scriptChar: 'अ', bcp47: 'hi-IN', gtts: 'hi', englishName: 'Hindi',
+    replay: 'फिर से सुनें', schemesHeader: 'महिलाओं के लिए सरकारी योजनाएं (21 योजनाएं)',
+    yesBtn: 'हाँ, मेरे पास है', noBtn: 'नहीं है', nextBtn: 'आगे बढ़ें', selectSchemePrompt: 'ऊपर किसी योजना को छुएं', restartBtn: 'दूसरी योजना देखें',
+    listeningNotice: 'सुन रही हूँ दीदी...', pausedNotice: 'रुक गई हूँ',
+    submitNotice: 'बोलना समाप्त', pauseNotice: 'रोकें', resumeNotice: 'जारी रखें',
+    greeting: 'नमस्ते दीदी! मैं प्रियमानवले हूँ। महिलाओं के लिए 20 से अधिक सरकारी योजनाओं की जानकारी मेरे पास है। निसंकोच पूछिए।',
+    queryPrompt: 'क्या आपके पास {d} है?',
+    missingDocNotice: '{d} नहीं है? चिंता मत कीजिए! {p} जाइए। नीचे नक्शे पर रास्ता देखें।',
+    documents: ['राशन कार्ड', 'पहचान पत्र', 'बैंक पासबुक', 'पासपोर्ट फोटो'],
+    places: ['राशन दफ्तर या जन सेवा केंद्र (CSC)', 'आधार केंद्र या डाकघर में (मुफ्त)', 'बैंक या डाकघर में (जीरो बैलेंस)', 'नजदीकी फोटो स्टूडियो'],
+    mapQueries: ['nearest ration office CSC centre', 'nearest Aadhaar centre post office', 'nearest bank branch post office', 'nearest photo studio'],
+    allReadyPrompt: 'सब तैयार है! यह कागजात लेकर पंचायत भवन या जन सेवा केंद्र जाइए।',
+    someMissingPrompt: 'पहले छूटे हुए कागजात बनवाइए, फिर पंचायत भवन जाइए।'
+  },
+  te: {
+    name: 'తెలుగు', sub: 'Telugu', scriptChar: 'తె', bcp47: 'te-IN', gtts: 'te', englishName: 'Telugu',
+    replay: 'మళ్లీ వినండి', schemesHeader: 'మహిళా సంక్షేమ పథకాలు (21 పథకాలు)',
+    yesBtn: 'అవును, ఉంది', noBtn: 'లేదు', nextBtn: 'తర్వాత', selectSchemePrompt: 'పై పథకాన్ని ఎంచుకోండి', restartBtn: 'మరో పథకం చూడండి',
+    listeningNotice: 'వింటున్నాను అక్కా...', pausedNotice: 'ఆపబడింది',
+    submitNotice: 'పూర్తయింది', pauseNotice: 'ఆపండి', resumeNotice: 'కొనసాగించు',
+    greeting: 'నమస్కారం అక్కా! నేను మీ ప్రియమానవళె. మహిళల కోసం 20 కి పైగా ప్రభుత్వ పథకాలు ఉన్నాయి, మీ సందేహాలు నిరభ్యంతరంగా అడగండి.',
+    queryPrompt: 'మీ దగ్గర {d} ఉందా?',
+    missingDocNotice: '{d} లేదా? పర్వాలేదు! వెంటనే {p} వెళ్ళండి. కింద మ్యాప్ చూడండి.',
+    documents: ['రేషన్ కార్డు', 'గుర్తింపు కార్డు', 'బ్యాంక్ పాస్‌బుక్', 'ఫోటో'],
+    places: ['రేషన్ డీలర్ లేదా మీసేవ కేంద్రానికి', 'ఆధార్ కేంద్రం లేదా పోస్టాఫీసుకు (ఉచితం)', 'బ్యాంకు లేదా పోస్టాఫీసుకు (జీరో బ్యాలెన్స్)', 'దగ్గరలోని ఫోటో స్టూడియోకి'],
+    mapQueries: ['nearest ration dealer meeseva centre', 'nearest Aadhaar centre post office', 'nearest bank branch post office', 'nearest photo studio'],
+    allReadyPrompt: 'అంతా సిద్ధమైంది! ఈ కాగితాలతో పంచాయతీ లేదా మీసేవ కేంద్రానికి వెళ్లండి.',
+    someMissingPrompt: 'ముందుగా లేని పత్రాలు తీసుకోండి, తర్వాత పంచాయతీ ఆఫీస్‌కు వెళ్లండి.'
+  },
+  kn: {
+    name: 'ಕನ್ನಡ', sub: 'Kannada', scriptChar: 'ಕ', bcp47: 'kn-IN', gtts: 'kn', englishName: 'Kannada',
+    replay: 'ಮತ್ತೆ ಕೇಳಿ', schemesHeader: 'ಮಹಿಳೆಯರಿಗಾಗಿ ಸರ್ಕಾರಿ ಯೋಜನೆಗಳು (21 ಯೋಜನೆಗಳು)',
+    yesBtn: 'ಹೌದು, ಇದೆ', noBtn: 'ಇಲ್ಲ', nextBtn: 'ಮುಂದೆ', selectSchemePrompt: 'ಮೇಲಿನ ಯೋಜನೆಯನ್ನು ಮುಟ್ಟಿ', restartBtn: 'ಇನ್ನೊಂದು ಯೋಜನೆ ನೋಡಿ',
+    listeningNotice: 'ಕೇಳಿಸಿಕೊಳ್ಳುತ್ತಿದ್ದೇನೆ...', pausedNotice: 'ವಿರಾಮಗೊಳಿಸಲಾಗಿದೆ',
+    submitNotice: 'ಮುಗಿಯಿತು', pauseNotice: 'ನಿಲ್ಲಿಸಿ', resumeNotice: 'ಮುಂದುವರಿಸಿ',
+    greeting: 'ನಮಸ್ಕಾರ ಅಕ್ಕ! ನಾನು ಪ್ರಿಯಮಾನವಳೆ. ಮಹಿಳೆಯರಿಗಾಗಿ 20ಕ್ಕೂ ಹೆಚ್ಚು ಸರ್ಕಾರಿ ಯೋಜನೆಗಳ ಮಾಹಿತಿ ಇದೆ, ಯಾವುದೇ ಸಂದೇಹವಿದ್ದರೂ ಕೇಳಿ.',
+    queryPrompt: 'ನಿಮ್ಮ ಬಳಿ {d} ಇದೆಯೇ?',
+    missingDocNotice: '{d} ಇಲ್ವಾ? ಚಿಂತಿಸಬೇಡಿ! {p} ಹೋಗಿ. ಕೆಳಗಿನ ನಕ್ಷೆ ನೋಡಿ ದಾರಿ ತಿಳಿಯಿರಿ.',
+    documents: ['ರೇಷನ್ ಕಾರ್ಡ್', 'ಗುರುತಿನ ಚೀಟಿ', 'ಬ್ಯಾಂಕ್ ಪಾಸ್‌ಬುಕ್', 'ಫೋಟೋ'],
+    places: ['ರೇಷನ್ ಕಚೇರಿ ಅಥವಾ ಗ್ರಾಮ ಒನ್ ಕೇಂದ್ರಕ್ಕೆ', 'ಆಧಾರ್ ಕೇಂದ್ರ ಅಥವಾ ಅಂಚೆ ಕಚೇರಿಗೆ (ಉಚಿತ)', 'ಬ್ಯಾಂಕ್ ಅಥವಾ ಅಂಚೆ ಕಚೇರಿಗೆ', 'ಹತ್ತಿರದ ಫೋಟೋ ಸ್ಟುಡಿಯೋಗೆ'],
+    mapQueries: ['nearest ration office grama one centre', 'nearest Aadhaar centre post office', 'nearest bank branch post office', 'nearest photo studio'],
+    allReadyPrompt: 'ಎಲ್ಲಾ ಸಿದ್ಧವಾಗಿದೆ! ಈ ದಾಖಲೆಗಳೊಂದಿಗೆ ಗ್ರಾಮ ಪಂಚಾಯತ್ ಕಚೇರಿಗೆ ಹೋಗಿ.',
+    someMissingPrompt: 'ಮೊದಲು ಇಲ್ಲದ ದಾಖಲೆಗಳನ್ನು ಮಾಡಿಸಿ, ನಂತರ ಪಂಚಾಯತ್‌ಗೆ ಹೋಗಿ.'
+  },
+  mr: {
+    name: 'मराठी', sub: 'Marathi', scriptChar: 'म', bcp47: 'mr-IN', gtts: 'mr', englishName: 'Marathi',
+    replay: 'पुन्हा ऐका', schemesHeader: 'महिलांसाठी शासकीय योजना (२१ योजना)',
+    yesBtn: 'होय, आहे', noBtn: 'नाही', nextBtn: 'पुढे', selectSchemePrompt: 'वरील योजनेवर टॅप करा', restartBtn: 'दुसरी योजना पहा',
+    listeningNotice: 'ऐकत आहे...', pausedNotice: 'थांबवले आहे',
+    submitNotice: 'पूर्ण झाले', pauseNotice: 'थांबा', resumeNotice: 'सुरू ठेवा',
+    greeting: 'नमस्कार ताई! मी प्रियमानवळे. महिलांसाठी २० हून अधिक सरकारी योजनांची माहिती मी देईन, कोणतीही शंका विचारा.',
+    queryPrompt: 'तुमच्याकडे {d} आहे का?',
+    missingDocNotice: '{d} नाही? काळजी नको! {p} जा. खालील नकाशा पाहून मार्ग शोधा.',
+    documents: ['रेशन कार्ड', 'ओळखपत्र', 'बँक पासबुक', 'फोटो'],
+    places: ['रेशन दुकानात किंवा सेतू केंद्रात', 'आधार केंद्र किंवा पोस्ट ऑफिसमध्ये', 'बँकेत किंवा पोस्ट ऑफिसमध्ये', 'जवळच्या फोटो स्टुडिओत'],
+    mapQueries: ['nearest ration office setu CSC centre', 'nearest Aadhaar centre post office', 'nearest bank branch post office', 'nearest photo studio'],
+    allReadyPrompt: 'सर्व कागदपत्रे तयार आहेत! ही कागदपत्रे घेऊन ग्रामपंचायत किंवा सेतू केंद्रात जा.',
+    someMissingPrompt: 'आधी राहिलेली कागदपत्रे बनवा, मग ग्रामपंचायतीत जा.'
+  },
+  bn: {
+    name: 'বাংলা', sub: 'Bengali', scriptChar: 'অ', bcp47: 'bn-IN', gtts: 'bn', englishName: 'Bengali',
+    replay: 'আবার শুনুন', schemesHeader: 'মহিলাদের জন্য সরকারি প্রকল্প (২১টি প্রকল্প)',
+    yesBtn: 'হ্যাঁ, আছে', noBtn: 'নেই', nextBtn: 'পরবর্তী', selectSchemePrompt: 'উপরে একটি প্রকল্প বেছে নিন', restartBtn: 'অন্য প্রকল্প দেখুন',
+    listeningNotice: 'শুনছি দিদি...', pausedNotice: 'সাময়িক স্থগিত',
+    submitNotice: 'বলা শেষ', pauseNotice: 'থামান', resumeNotice: 'চালিয়ে যান',
+    greeting: 'নমস্কার দিদি! আমি প্রিয়মানবলে। মহিলাদের জন্য ২০টিরও বেশি সরকারি প্রকল্পের তথ্য নিয়ে আমি আছি, যেকোনো প্রশ্ন করুন।',
+    queryPrompt: 'আপনার কাছে কি {d} আছে?',
+    missingDocNotice: '{d} নেই? চিন্তা নেই! {p} যান। নিচের মানচিত্রে সঠিক পথ দেখুন।',
+    documents: ['রেশন কার্ড', 'পরিচয়পত্র', 'ব্যাংক পাসবই', 'ছবি'],
+    places: ['রেশন অফিস বা বাংলা সহায়তা কেন্দ্রে', 'আধার কেন্দ্র বা পোস্ট অফিসে (বিনামূল্যে)', 'ব্যাংক বা পোস্ট অফিসে (জিরো ব্যালেন্স)', 'কাছের ফটো স্টুডিওতে'],
+    mapQueries: ['nearest ration office bangla sahayata kendra', 'nearest Aadhaar centre post office', 'nearest bank branch post office', 'nearest photo studio'],
+    allReadyPrompt: 'সব তৈরি! এই কাগজপত্র নিয়ে পঞ্চায়েত অফিসে বা দুয়ারে সরকার ক্যাম্পে যান।',
+    someMissingPrompt: 'আগে না থাকা কাগজগুলো তৈরি করুন, তারপর পঞ্চায়েতে যান।'
+  },
+  gu: {
+    name: 'ગુજરાતી', sub: 'Gujarati', scriptChar: 'ગુ', bcp47: 'gu-IN', gtts: 'gu', englishName: 'Gujarati',
+    replay: 'ફરી સાંભળો', schemesHeader: 'મહિલાઓ માટે સરકારી યોજનાઓ (૨૧ યોજનાઓ)',
+    yesBtn: 'હા, છે', noBtn: 'નથી', nextBtn: 'આગળ', selectSchemePrompt: 'ઉપર એક યોજના પસંદ કરો', restartBtn: 'બીજી યોજના જુઓ',
+    listeningNotice: 'સાંભળી રહી છું...', pausedNotice: 'થોભાવેલ છે',
+    submitNotice: 'બોલવું પૂરું', pauseNotice: 'થોભો', resumeNotice: 'ચાલુ રાખો',
+    greeting: 'નમસ્તે બહેન! હું પ્રિયમાનવલે છું. મહિલાઓ માટે ૨૦ થી વધુ સરકારી યોજનાઓની માહિતી મારી પાસે છે, પૂછો.',
+    queryPrompt: 'શું તમારી પાસે {d} છે?',
+    missingDocNotice: '{d} નથી? ચિંતા ન કરશો! {p} જાઓ. નીચે નકશામાં રસ્તો જુઓ.',
+    documents: ['રેશન કાર્ડ', 'ઓળખ કાર્ડ', 'બેંક પાસબુક', 'ફોટો'],
+    places: ['રેશન ઓફિસ કે જન સેવા કેન્દ્ર પર', 'આધાર કેન્દ્ર કે પોસ્ટ ઓફિસમાં', 'બેંક કે પોસ્ટ ઓફિસમાં (ઝીરો બેલેન્સ)', 'નજીકના ફોટો સ્ટુડિયોમાં'],
+    mapQueries: ['nearest ration office CSC centre', 'nearest Aadhaar centre post office', 'nearest bank branch post office', 'nearest photo studio'],
+    allReadyPrompt: 'બધું તૈયાર છે! આ કાગળો લઈને ગ્રામ પંચાયત અથવા જન સેવા કેન્દ્ર જાઓ.',
+    someMissingPrompt: 'પહેલા બાકી કાગળો મેળવી લો, પછી ગ્રામ પંચાયત જાઓ.'
+  }
+};
+
+/**
+ * ------------------------------------------------------------------
+ * 21 COMPLETE GOVERNMENT WELFARE SCHEMES FOR WOMEN
+ * ------------------------------------------------------------------
+ */
+const GOVERNMENT_SCHEMES = [
+  // Core 11 Schemes
+  { id: 'ujjwala', icon: '🔥', title: 'PM Ujjwala Yojana', benefit: 'Free LPG Cylinder + Stove', requiredDocs: [0, 1, 2, 3] },
+  { id: 'urimai_thogai', icon: '💳', title: 'Magalir Urimai / Ladli', benefit: '₹1,000 - ₹1,250 Monthly Cash', requiredDocs: [0, 1, 2] },
+  { id: 'mahila_samman', icon: '💰', title: 'Mahila Samman Patra', benefit: '7.5% High Interest Bank Savings', requiredDocs: [1, 2, 3] },
+  { id: 'sukanya', icon: '👧', title: 'Sukanya Samriddhi', benefit: 'Daughter Future Fund (8.2% Return)', requiredDocs: [1, 2, 3] },
+  { id: 'lakhpati', icon: '🌾', title: 'Lakhpati Didi (SHG)', benefit: '₹1-5 Lakh Interest-Free Micro Loan', requiredDocs: [0, 1, 2, 3] },
+  { id: 'matru_vandana', icon: '🤱', title: 'PM Matru Vandana', benefit: '₹5,000 Pregnancy Cash Support', requiredDocs: [1, 2, 3] },
+  { id: 'svanidhi', icon: '🧺', title: 'PM SVANidhi', benefit: '₹10,000 Vendor Working Capital', requiredDocs: [1, 2, 3] },
+  { id: 'ayushman', icon: '🏥', title: 'Ayushman PM-JAY', benefit: '₹5 Lakh Free Hospital Coverage', requiredDocs: [0, 1] },
+  { id: 'awas_gramin', icon: '🏠', title: 'PM Awas Gramin', benefit: '₹1.2 Lakh House in Woman Name', requiredDocs: [0, 1, 2, 3] },
+  { id: 'vishwakarma', icon: '🧵', title: 'PM Vishwakarma', benefit: 'Free Sewing Machine + ₹15k Tool Grant', requiredDocs: [1, 2, 3] },
+  { id: 'janani_suraksha', icon: '🩺', title: 'Janani Suraksha', benefit: '₹1,400 Cash for Hospital Birth', requiredDocs: [1, 2] },
+
+  // 10 Newly Added Schemes
+  { id: 'marriage_aid', icon: '💍', title: 'Moovalur / Wedding Aid', benefit: 'Gold for Mangalsutra + ₹50,000 Grant', requiredDocs: [0, 1, 2, 3] },
+  { id: 'kgbv_school', icon: '🎒', title: 'Kasturba Balika School', benefit: 'Free Residential Schooling for Girls', requiredDocs: [0, 1, 3] },
+  { id: 'widow_pension', icon: '🕊️', title: 'Indira Widow Pension', benefit: 'Monthly Sustenance Direct Pension', requiredDocs: [0, 1, 2, 3] },
+  { id: 'standup_india', icon: '🏢', title: 'Stand-Up India Women', benefit: '₹10 Lakh to ₹1 Crore Business Credit', requiredDocs: [1, 2, 3] },
+  { id: 'working_hostel', icon: '🏢', title: 'Sakhi Niwas Hostel', benefit: 'Safe Subsidized Working Women Stay', requiredDocs: [1, 2, 3] },
+  { id: 'one_stop_centre', icon: '🛡️', title: 'One Stop Centre (Sakhi)', benefit: '24/7 Free Medical, Legal & Police Aid', requiredDocs: [1] },
+  { id: 'step_training', icon: '✂️', title: 'STEP Skill Program', benefit: 'Free Tailoring, Weaving & Agro Skills', requiredDocs: [0, 1, 3] },
+  { id: 'palna_creche', icon: '👶', title: 'Palna Creche Scheme', benefit: 'Free Safe Child Daycare for Working Moms', requiredDocs: [1, 2, 3] },
+  { id: 'mahila_coir', icon: '🧶', title: 'Mahila Coir Yojana', benefit: '75% Subsidy on Coir Spinning Machines', requiredDocs: [0, 1, 2, 3] },
+  { id: 'bbbp_grant', icon: '🌟', title: 'Beti Bachao Beti Padhao', benefit: 'Scholarships & Higher Education Aid', requiredDocs: [0, 1, 2, 3] }
+];
+
+/**
+ * ------------------------------------------------------------------
+ * REALISTIC DOCUMENT PREVIEWS
+ * ------------------------------------------------------------------
+ */
+const DOCUMENT_ASSETS = [
+  `<div class="doc-thumbnail-frame frame-ration">
+    <svg viewBox="0 0 40 30" width="34" height="26">
+      <rect x="2" y="2" width="36" height="26" rx="3" fill="#ef4444"/>
+      <rect x="6" y="6" width="28" height="4" rx="1" fill="#fee2e2"/>
+      <rect x="6" y="13" width="18" height="2.5" fill="#fca5a5"/>
+      <rect x="6" y="18" width="22" height="2.5" fill="#fca5a5"/>
+      <circle cx="30" cy="18" r="3.5" fill="#fef08a"/>
+    </svg>
+  </div>`,
+  `<div class="doc-thumbnail-frame frame-id">
+    <svg viewBox="0 0 40 30" width="34" height="26">
+      <rect x="2" y="2" width="36" height="26" rx="3" fill="#ffffff" stroke="#0284c7" stroke-width="1.5"/>
+      <rect x="5" y="5" width="10" height="12" rx="1" fill="#bae6fd"/>
+      <circle cx="10" cy="9" r="3" fill="#0284c7"/>
+      <rect x="18" y="6" width="16" height="2.5" rx="1" fill="#0284c7"/>
+      <rect x="18" y="11" width="12" height="2" fill="#94a3b8"/>
+      <rect x="5" y="21" width="30" height="3" rx="1" fill="#f59e0b"/>
+    </svg>
+  </div>`,
+  `<div class="doc-thumbnail-frame frame-bank">
+    <svg viewBox="0 0 40 30" width="34" height="26">
+      <rect x="2" y="2" width="36" height="26" rx="3" fill="#047857"/>
+      <circle cx="20" cy="13" r="5" fill="#fbbf24"/>
+      <rect x="6" y="21" width="28" height="3" rx="1" fill="#d1fae5"/>
+    </svg>
+  </div>`,
+  `<div class="doc-thumbnail-frame frame-photo">
+    <svg viewBox="0 0 40 30" width="34" height="26">
+      <rect x="6" y="2" width="28" height="26" rx="2" fill="#ffffff" stroke="#9333ea" stroke-width="1.5"/>
+      <circle cx="20" cy="11" r="5" fill="#c084fc"/>
+      <path d="M 11 25 C 11 18 29 18 29 25 Z" fill="#7e22ce"/>
+    </svg>
+  </div>`
+];
+
+const State = {
+  currentLanguage: 'ta',
+  selectedScheme: null,
+  documentStates: {},
+  isMissingStep: false,
+  missingDocIndex: null,
+  lastUtteredText: '',
+  audioInstance: null
+};
+
+const Router = {
+  navigate(targetViewId) {
+    SpeechEngine.stop();
+    DictationService.abortSession();
+    ['view-intro', 'view-language', 'view-stage'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = (id === targetViewId) ? 'flex' : 'none';
+    });
+    if (targetViewId === 'view-stage') {
+      StageController.refreshStage();
+      SpeechEngine.speak(I18N_LOCALES[State.currentLanguage].greeting);
+    }
+  }
+};
+
+const SpeechEngine = {
+  speak(text) {
+    this.stop();
+    State.lastUtteredText = text;
+    document.getElementById('lbl-dialogue-output').textContent = text;
+
+    const clean = text.replace(/[\u{1F300}-\u{1FAFF}\u2600-\u27BF]/gu, '').trim();
+    const localeMeta = I18N_LOCALES[State.currentLanguage];
+    let synthSuccess = false;
+
+    if (window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+      const voices = window.speechSynthesis.getVoices();
+      const targetBcp = localeMeta.bcp47;
+      const matchedVoice = voices.find(v => v.lang.replace('_', '-') === targetBcp) ||
+                           voices.find(v => v.lang.replace('_', '-').startsWith(targetBcp.slice(0, 2)));
+
+      if (matchedVoice) {
+        const utterance = new SpeechSynthesisUtterance(clean);
+        utterance.voice = matchedVoice;
+        utterance.lang = targetBcp;
+        utterance.rate = 0.86;
+        window.speechSynthesis.speak(utterance);
+        synthSuccess = true;
+      }
+    }
+
+    if (!synthSuccess) {
+      const gttsCode = localeMeta.gtts;
+      const streamUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(clean)}&tl=${gttsCode}&client=tw-ob`;
+      State.audioInstance = new Audio(streamUrl);
+      State.audioInstance.play().catch(() => {});
+    }
+  },
+
+  stop() {
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    if (State.audioInstance) {
+      State.audioInstance.pause();
+      State.audioInstance = null;
+    }
+  },
+
+  replayLast() {
+    if (State.lastUtteredText) this.speak(State.lastUtteredText);
+  }
+};
+
+const DictationService = {
+  recognition: null,
+  isRecording: false,
+  isPaused: false,
+  accumulatedWords: '',
+
+  initSession() {
+    SpeechEngine.stop();
+    const SpeechConstructor = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechConstructor) {
+      alert("Please use Google Chrome for speech recognition support.");
+      return;
+    }
+
+    this.accumulatedWords = '';
+    this.isPaused = false;
+    this.isRecording = true;
+
+    this.recognition = new SpeechConstructor();
+    this.recognition.continuous = true;
+    this.recognition.interimResults = true;
+    this.recognition.lang = I18N_LOCALES[State.currentLanguage].bcp47;
+
+    document.getElementById('recording-control-tray').style.display = 'flex';
+    document.getElementById('container-central-mic').style.display = 'none';
+    
+    const locale = I18N_LOCALES[State.currentLanguage];
+    document.getElementById('lbl-recording-status').textContent = locale.listeningNotice;
+    document.getElementById('lbl-stop-submit-caption').textContent = locale.submitNotice;
+    document.getElementById('lbl-pause-dictation-caption').textContent = locale.pauseNotice;
+    document.getElementById('glyph-pause-dictation').textContent = '⏸️';
+    document.getElementById('lbl-live-transcript-stream').textContent = '...';
+
+    this.recognition.onresult = (event) => {
+      let interim = '';
+      for (let i = event.resultIndex; i < event.results.length; ++i) {
+        if (event.results[i].isFinal) {
+          this.accumulatedWords += ' ' + event.results[i][0].transcript;
+        } else {
+          interim += event.results[i][0].transcript;
+        }
+      }
+      document.getElementById('lbl-live-transcript-stream').textContent = 
+        (this.accumulatedWords + ' ' + interim).trim() || '...';
+    };
+
+    this.recognition.onerror = (e) => {
+      if (e.error !== 'no-speech') console.warn('Recognition notification:', e.error);
+    };
+
+    this.recognition.onend = () => {
+      if (this.isRecording && !this.isPaused) {
+        try { this.recognition.start(); } catch (err) {}
+      }
+    };
+
+    try { this.recognition.start(); } catch (err) {}
+  },
+
+  togglePause() {
+    if (!this.isRecording) return;
+    const locale = I18N_LOCALES[State.currentLanguage];
+    if (!this.isPaused) {
+      this.isPaused = true;
+      if (this.recognition) this.recognition.stop();
+      document.getElementById('lbl-recording-status').textContent = locale.pausedNotice;
+      document.getElementById('lbl-pause-dictation-caption').textContent = locale.resumeNotice;
+      document.getElementById('glyph-pause-dictation').textContent = '▶️';
+    } else {
+      this.isPaused = false;
+      document.getElementById('lbl-recording-status').textContent = locale.listeningNotice;
+      document.getElementById('lbl-pause-dictation-caption').textContent = locale.pauseNotice;
+      document.getElementById('glyph-pause-dictation').textContent = '⏸️';
+      if (this.recognition) {
+        try { this.recognition.start(); } catch (err) {}
+      }
+    }
+  },
+
+  stopAndSubmit() {
+    this.isRecording = false;
+    this.isPaused = false;
+    if (this.recognition) {
+      this.recognition.stop();
+      this.recognition = null;
+    }
+    document.getElementById('recording-control-tray').style.display = 'none';
+    document.getElementById('container-central-mic').style.display = 'flex';
+
+    const transcriptResult = (this.accumulatedWords + ' ' + 
+      document.getElementById('lbl-live-transcript-stream').textContent).trim();
+    if (transcriptResult && transcriptResult !== '...') {
+      SemanticEngine.processUtterance(transcriptResult);
+    }
+  },
+
+  abortSession() {
+    this.isRecording = false;
+    this.isPaused = false;
+    if (this.recognition) {
+      this.recognition.stop();
+      this.recognition = null;
+    }
+    document.getElementById('recording-control-tray').style.display = 'none';
+    document.getElementById('container-central-mic').style.display = 'flex';
+  }
+};
+
+const SemanticEngine = {
+  processUtterance(rawText) {
+    const text = rawText.trim();
+    if (!text) return;
+
+    const currentMode = StageController.getFlowMode();
+    const isNegation = /இல்லை|இல்ல|नहीं|ना|ഇല്ല|ഇല്ലേ|లేదు|కాదు|નથી|ના|নেই|নাহি|नाही|\bno\b/i.test(text);
+    const isAffirmation = /ஆம்|இருக்|சரி|हाँ|हां|है|ഉണ്ട്|അതെ|ശരി|ಹೌದು|ಇದೆ|అవును|ఉంది|హా|છે|হ্যাঁ|আছে|होय|आहे|\byes\b/i.test(text);
+
+    if (currentMode === 'ask') {
+      if (isNegation) { StageController.registerDocAnswer(false); return; }
+      if (isAffirmation) { StageController.registerDocAnswer(true); return; }
+    }
+
+    const reasonedResponse = this.resolveReasoning(text);
+    SpeechEngine.speak(reasonedResponse);
+  },
+
+  resolveReasoning(query) {
+    const q = query.toLowerCase();
+    const l = State.currentLanguage;
+
+    // Reason: Marriage Aid / Kalyana Mandapam / Wedding Assistance
+    if (/marriage|wedding|kalyanam|கல்யாணம்|திருமணம்|शादी|विवाह|పెళ్లి|వివాహం|ಮದುವೆ|വിവാഹം|বিয়ে|લગ્ન/i.test(q)) {
+      StageController.selectScheme('marriage_aid');
+      const map = {
+        ta: 'திருமண நிதி உதவி மற்றும் தாலிக்கு தங்கம் திட்டத்திற்கு மணப்பெண்ணின் கல்விச் சான்றிதழ், குடும்ப அட்டை மற்றும் வயதுச் சான்று அவசியம் சகோதரி.',
+        en: 'For marriage assistance and gold for mangalsutra, the bride’s educational certificate, ration card, and age proof are verified at the Panchayat.',
+        hi: 'विवाह सहायता योजना के लिए दुल्हन का शैक्षिक प्रमाण पत्र, राशन कार्ड और आयु प्रमाण पंचायत में जांचा जाता है दीदी।',
+        ml: 'വിവാഹ ധനസഹായ പദ്ധതിക്കായി പെൺകുട്ടിയുടെ വിദ്യാഭ്യാസ സർട്ടിഫിക്കറ്റും റേഷൻ കാർഡും പ്രായരേഖയുമാണ് പരിശോധിക്കുന്നത് ചേച്ചി.',
+        te: 'వివాహ ఆర్థిక సహాయం కోసం వధువు విద్యా ధృవీకరణ పత్రం, రేషన్ కార్డు మరియు వయస్సు ధృవీకరణ అవసరం అక్కా.',
+        kn: 'ವಿವಾಹ ಧನಸಹಾಯ ಯೋಜನೆಗೆ ವಧುವಿನ ಶೈಕ್ಷಣಿಕ ಪ್ರಮಾಣಪತ್ರ, ರೇಷನ್ ಕಾರ್ಡ್ ಮತ್ತು ವಯಸ್ಸಿನ ದಾಖಲೆ ಅಗತ್ಯವಿರುತ್ತದೆ ಅಕ್ಕ.',
+        mr: 'विवाह अनुदान योजनेसाठी वधूचे शैक्षणिक प्रमाणपत्र, रेशन कार्ड आणि वयाचा पुरावा आवश्यक असतो ताई.',
+        bn: 'বিবাহ সহায়তা প্রকল্পের জন্য কনের শিক্ষাগত যোগ্যতার শংসাপত্র, রেশন কার্ড এবং বয়সের প্রমাণ প্রয়োজন দিদি।',
+        gu: 'લગ્ન સહાય યોજના માટે કન્યાનું શૈક્ષણિક પ્રમાણપત્ર અને રેશનકાર્ડ ચકાસવામાં આવે છે બહેન.'
+      };
+      return map[l] || map.en;
+    }
+
+    // Reason: Widow Pension / Single Mothers
+    if (/widow|விதவை|विधवा|వితంతు|ವಿಧವೆ|വിധവ|বিধবা|વિધવા/i.test(q)) {
+      StageController.selectScheme('widow_pension');
+      const map = {
+        ta: 'விதவை மறுவாழ்வு மற்றும் மாதாந்திர ஓய்வூதியத்திற்கு கணவரின் இறப்புச் சான்றிதழ் மற்றும் உங்கள் வங்கி கணக்கு புத்தகம் தேவை சகோதரி.',
+        en: 'For widow pensions and financial support, your husband’s death certificate, Aadhaar, and bank passbook are required.',
+        hi: 'विधवा पेंशन सहायता के लिए पति का मृत्यु प्रमाण पत्र, आधार और बैंक पासबुक जरूरी है दीदी।',
+        ml: 'വിധവാ പെൻഷനായി ഭർത്താവിന്റെ മരണ സർട്ടിഫിക്കറ്റും ബാങ്ക് പാസ്ബുക്കുമാണ് പഞ്ചായത്തിൽ നൽകേണ്ടത് ചേച്ചി.',
+        te: 'వితంతు పింఛను కొరకు భర్త మరణ ధృవీకరణ పత్రం మరియు బ్యాంక్ పాస్‌బుక్ సమర్పించాలి అక్కా.',
+        kn: 'ವಿಧವಾ ವೇತನಕ್ಕಾಗಿ ಪತಿಯ ಮರಣ ಪ್ರಮಾಣಪತ್ರ ಮತ್ತು ಬ್ಯಾಂಕ್ ಪಾಸ್‌ಬುಕ್ ಅಗತ್ಯವಿರುತ್ತದೆ ಅಕ್ಕ.',
+        mr: 'विधवा पेन्शनसाठी पतीचा मृत्यू दाखला आणि बँक पासबुक आवश्यक असते ताई.',
+        bn: 'বিধবা ভাতার জন্য স্বামীর মৃত্যুর শংসাপত্র এবং ব্যাংক পাসবই জমা দিতে হবে দিদি।',
+        gu: 'વિધવા સહાય પેન્શન માટે પતિનો મરણ દાખલો અને બેંક પાસબુક જરૂરી છે બહેન.'
+      };
+      return map[l] || map.en;
+    }
+
+    // Reason: School / Daughter Education
+    if (/school|daughter|education|பள்ளி|கல்வி|बेटी|स्कूल|బడి|ಶಾಲೆ|പഠനം|স্কুল|શાળા/i.test(q)) {
+      StageController.selectScheme('kgbv_school');
+      const map = {
+        ta: 'கிராமப்புற பெண் குழந்தைகளின் இலவச உண்டு உறைவிடப் பள்ளி மற்றும் உதவித்தொகைக்கு குடும்ப அட்டை மற்றும் பிறப்புச் சான்று தேவை சகோதரி.',
+        en: 'For free residential schooling and girl child education grants, birth proof and ration card are verified.',
+        hi: 'कस्तूरबा बालिका आवासीय विद्यालय और छात्रवृत्ति के लिए जन्म प्रमाण पत्र और राशन कार्ड जरूरी है दीदी।',
+        ml: 'പെൺകുട്ടികളുടെ സൗജന്യ റസിഡൻഷ്യൽ സ്കൂൾ വിദ്യാഭ്യാസത്തിനായി ജനന സർട്ടിഫിക്കറ്റും റേഷൻ കാർഡുമാണ് വേണ്ടത് ചേച്ചി.',
+        te: 'గ్రామీణ బాలికల ఉచిత రెసిడెన్షియల్ విద్య కొరకు జనన ధృవీకరణ మరియు రేషన్ కార్డు అవసరం అక్కా.',
+        kn: 'ಬಾಲಕಿಯರ ಉಚಿತ ವಸತಿ ಶಾಲೆ ಮತ್ತು ಶಿಕ್ಷಣ ನೆರವಿಗಾಗಿ ಜನನ ಪ್ರಮಾಣಪತ್ರ ಮತ್ತು ರೇಷನ್ ಕಾರ್ಡ್ ಪರಿಶೀಲಿಸಲಾಗುತ್ತದೆ ಅಕ್ಕ.',
+        mr: 'मुलींच्या मोफत निवासी शाळा आणि शिक्षणासाठी जन्माचा दाखला आणि रेशन कार्ड लागते ताई.',
+        bn: 'মেয়েদের বিনামূল্যে আবাসিক বিদ্যালয়ে পড়াশোনার জন্য জন্মের প্রমাণপত্র ও রেশন কার্ড প্রয়োজন দিদি।',
+        gu: 'દીકરીઓના મફત નિવાસી શાળા શિક્ષણ માટે જન્મનો દાખલો અને રેશનકાર્ડ જરૂરી છે બહેન.'
+      };
+      return map[l] || map.en;
+    }
+
+    // Reason: Ration Card Necessity
+    if (/ration|ரேஷன்|ரேசன்|राशन|రేషన్|ರೇಷನ್|റേഷൻ|রেশন/i.test(q)) {
+      const map = {
+        ta: 'ரேஷன் அட்டை என்பது உங்கள் குடும்பத்தில் எத்தனை உறுப்பினர்கள் இருக்கிறார்கள் மற்றும் பொருளாதார நிலையை அறியவே கேட்கிறார்கள் சகோதரி. இதன் மூலம் தான் ஏழை எளிய குடும்பங்களுக்கு அரிசி, கேஸ் மானியம் மற்றும் உரிமைத்தொகை சரியாக போய்ச் சேரும்.',
+        en: 'The government asks for a ration card to verify your family members and economic status, ensuring that food grains, LPG subsidies, and monthly cash reach rightful rural households.',
+        hi: 'राशन कार्ड परिवार के सदस्यों और आर्थिक स्थिति की पहचान के लिए मांगा जाता है दीदी, ताकि मुफ्त राशन, गैस सब्सिडी और आर्थिक सहायता सही परिवार तक पहुँचे।',
+        ml: 'കുടുംബത്തിലെ അംഗങ്ങളുടെ എണ്ണവും സാമ്പത്തിക സ്ഥിതിയും വ്യക്തമാക്കാനും, സൗജന്യ റേഷനും ആനുകൂല്യങ്ങളും കൃത്യമായി ലഭിക്കാനുമാണ് റേഷൻ കാർഡ് ആവശ്യപ്പെടുന്നത് ചേച്ചി.',
+        te: 'మీ కుటుంబంలో ఎంతమంది సభ్యులు ఉన్నారు మరియు ఆర్థిక పరిస్థితిని ధృవీకరించడానికే రేషన్ కార్డు అడుగుతారు అక్కా.',
+        kn: 'ಕುಟುಂಬದ ಸದಸ್ಯರ ಸಂಖ್ಯೆ ಮತ್ತು ಆರ್ಥಿಕ ಸ್ಥಿತಿಯನ್ನು ಗುರುತಿಸಲು ರೇಷನ್ ಕಾರ್ಡ್ ಕೇಳುತ್ತಾರೆ ಅಕ್ಕ.',
+        mr: 'कुटुंबातील सदस्य आणि आर्थिक स्थितीची पडताळणी करण्यासाठी रेशन कार्ड मागितले जाते ताई.',
+        bn: 'পরিবারে কতজন সদস্য আছেন এবং আর্থিক অবস্থা যাচাই করার জন্যই রেশন কার্ড চাওয়া হয় দিদি।',
+        gu: 'કુટુંબના સભ્યો અને આર્થિક સ્થિતિની ચકાસણી કરવા માટે રેશનકાર્ડ માંગવામાં આવે છે બહેન.'
+      };
+      return map[l] || map.en;
+    }
+
+    // Reason: Government Identification / Biometric ID
+    if (/aadhaar|aadhar|national id|identity card|id card|ஆதார்|அடையாள|आधार|ఆధార్|ಆಧಾರ್|ആധാർ|আধার/i.test(q)) {
+      const map = {
+        ta: 'அரசு ஆவணங்களில் உங்கள் பெயர், முகவரி மற்றும் விரல்ரேகை சரிபார்ப்பிற்காக இந்த அடையாள அட்டை கேட்கப்படுகிறது சகோதரி. உங்கள் பெயரில் உள்ள உதவித்தொகையை யாரும் திருடாமல் நேராக உங்களுக்கே கிடைக்க இது மிக முக்கியம்.',
+        en: 'A government identity card is required to verify your biometric identity and residence. It prevents duplicate entries and guarantees that your welfare fund reaches directly into your hands.',
+        hi: 'आपकी असली पहचान और पते की बायोमेट्रिक पुष्टि के लिए पहचान पत्र मांगा जाता है दीदी, ताकि किसी भी योजना में फर्जीवाड़ा न हो और हक का पैसा सीधे आप तक पहुँचे।',
+        ml: 'വ്യാജ അപേക്ഷകൾ ഒഴിവാക്കാനും, അപേക്ഷക നിങ്ങൾ തന്നെയാണെന്ന് വിരലടയാളത്തിലൂടെയും വിലാസത്തിലൂടെയും ഉറപ്പുവരുത്താനുമാണ് തിരിച്ചറിയൽ കാർഡ് ചോദിക്കുന്നത് ചേച്ചി.',
+        te: 'మీ అసలైన గుర్తింపు ధృవీకరణ కోసమే ఈ గుర్తింపు కార్డు అడుగుతారు అక్కా. దీనివల్ల నకిలీలను అరికట్టి మీ సొమ్ము నేరుగా మీకే చేరుతుంది.',
+        kn: 'ನಿಮ್ಮ ನೈಜ ಗುರುತು ಮತ್ತು ವಿಳಾಸವನ್ನು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಲು ಗುರುತಿನ ಚೀಟಿ ಕೇಳುತ್ತಾರೆ ಅಕ್ಕ.',
+        mr: 'तुमची खरी ओळख आणि पत्ता पडताळण्यासाठी ओळखपत्र आवश्यक असते ताई, ज्यामुळे घोटाळे टळतात.',
+        bn: 'আপনার আসল পরিচয় ও ঠিকানার প্রমাণের জন্যই এই পরিচয়পত্র চাওয়া হয় দিদি।',
+        gu: 'તમારી અસલ ઓળખ અને સરનામાની ખાતરી કરવા માટે ઓળખ કાર્ડ માંગવામાં આવે છે બહેન.'
+      };
+      return map[l] || map.en;
+    }
+
+    // Reason: Bank Account & Passbook
+    if (/bank|passbook|account|வங்கி|புத்தகம்|खाता|పాస్‌బుక్|ಬ್ಯಾಂಕ್|അക്കൗണ്ട്|অ্যাকাউন্ট/i.test(q)) {
+      const map = {
+        ta: 'அரசு கொடுக்கும் பண உதவி எந்த இடைத்தரகர்களும் இன்றி, நேரடியாக உங்கள் கைக்கே வர வேண்டும் என்பதற்காகவே வங்கி கணக்கு புத்தகம் கேட்கிறார்கள் சகோதரி.',
+        en: 'The government requires a bank passbook so that money transfers directly into your hands without any middlemen or cuts.',
+        hi: 'बिना किसी बिचौलिए के सरकार का पैसा सीधे आपके हाथों में पहुँच सके, इसीलिए बैंक पासबुक मांगी जाती है दीदी।',
+        ml: 'ഇടനിലക്കാരില്ലാതെ സർക്കാരിന്റെ പണം നേരിട്ട് നിങ്ങളുടെ അക്കൗണ്ടിലേക്ക് എത്താനാണ് ബാങ്ക് പാസ്ബുക്ക് ആവശ്യപ്പെടുന്നത് ചേച്ചി.',
+        te: 'ఎలాంటి దళారులు లేకుండా ప్రభుత్వం ఇచ్చే సొమ్ము నేరుగా మీ చేతికే అందడానికే బ్యాంక్ పాస్‌బుక్ అడుగుతారు అక్కా.',
+        kn: 'ಯಾವುದೇ ಮಧ್ಯವರ್ತಿಗಳಿಲ್ಲದೆ ಸರ್ಕಾರದ ಹಣ ನೇರವಾಗಿ ನಿಮ್ಮ ಖಾತೆಗೆ ಬರಲು ಬ್ಯಾಂಕ್ ಪಾಸ್‌ಬುಕ್ ಅಗತ್ಯವಿದೆ ಅಕ್ಕ.',
+        mr: 'कोणत्याही मध्यस्थांशिवाय शासनाचा पैसा थेट तुमच्या खात्यात जमा व्हावा यासाठी बँक पासबुक लागते ताई.',
+        bn: 'কোনো দালাল ছাড়াই সরকারি টাকা যাতে সরাসরি আপনার হাতে পৌঁছাতে পারে, সেজন্যই ব্যাংক পাসবই চাওয়া হয় দিদি।',
+        gu: 'વચેટિયા વગર સરકારના પૈસા સીધા તમારા ખાતામાં જમા થાય તે માટે બેંક પાસબુક જરૂરી છે બહેન.'
+      };
+      return map[l] || map.en;
+    }
+
+    // Reason: Passport Photo
+    if (/passport|photo|போட்டோ|புகைப்படம்|பாஸ்போர்ட்|फोटो|పాస్‌పోర్ట్|ಫೋಟೋ|ഫോട്ടോ|ছবি|ફોટો/i.test(q)) {
+      const map = {
+        ta: 'அரசு ஆவணத்தில் இருப்பது உங்கள் முகம் தான் என்பதை அதிகாரிகள் நேரில் பார்த்து சரிபார்க்கவே பாஸ்போர்ட் அளவு புகைப்படம் கேட்கிறார்கள் சகோதரி.',
+        en: 'Government officials ask for a passport-size photo to verify your face in person, ensuring that your welfare funds reach only you.',
+        hi: 'अधिकारी आपकी असली पहचान की पुष्टि के लिए फोटो मांगते हैं दीदी, ताकि सरकारी सहायता का पैसा सिर्फ आपको ही मिले।',
+        ml: 'അപേക്ഷിക്കുന്നത് നിങ്ങൾ തന്നെയാണെന്ന് ഉറപ്പുവരുത്താനാണ് പാസ്‌പോർട്ട് സൈസ് ഫോട്ടോ ചോദിക്കുന്നത് ചേച്ചി.',
+        te: 'ప్రభుత్వ అధికారులు మీ ముఖాన్ని గుర్తించి ధృవీకరించడానికే ఫోటో అడుగుతారు అక్కా.',
+        kn: 'ನೀವೇ ನಿಜವಾದ ಫಲಾನುಭವಿ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಲು ಪಾಸ್‌ಪೋರ್ಟ್ ಅಳತೆಯ ಫೋಟೋ ಕೇಳುತ್ತಾರೆ ಅಕ್ಕ.',
+        mr: 'शासकीय मदतीचा लाभ फक्त तुम्हालाच मिळावा यासाठी ओळख पटवण्यासाठी फोटो मागितला जातो ताई.',
+        bn: 'সরকারি সুবিধাটি যাতে কেবল আপনিই পান, সেজন্য পরিচয় নিশ্চিত করতে পাসপোর্ট মাপের ছবি চাওয়া হয় দিদি।',
+        gu: 'તમારી સાચી ઓળખની ખાતરી કરવા માટે પાસપોર્ટ સાઇઝનો ફોટો માંગવામાં આવે છે બહેન.'
+      };
+      return map[l] || map.en;
+    }
+
+    // Scheme Discovery via Speech
+    if (/gas|lpg|cylinder|கேஸ்|சிலிண்டர்|गैस|ഗ്യാസ്|గ్యాಸ್|ಗ್ಯಾಸ್|গ্যাস|ગેસ/i.test(q)) {
+      StageController.selectScheme('ujjwala');
+      return I18N_LOCALES[l].queryPrompt.replace('{d}', I18N_LOCALES[l].documents[0]);
+    }
+    if (/money|cash|aid|பண|உதவி|உரிமை|पैस|सहायता|പണം|സഹായം|డబ్బు|సాయం|ಹಣ|টাকা|પૈસા/i.test(q)) {
+      StageController.selectScheme('urimai_thogai');
+      return I18N_LOCALES[l].queryPrompt.replace('{d}', I18N_LOCALES[l].documents[0]);
+    }
+
+    // Fallback Explanation
+    const map = {
+      ta: `நீங்கள் "${query}" என்று கேட்டதன் நோக்கம் புரிகிறது சகோதரி. தகுதியான மகளிருக்கு உதவி நேரடியாக போய்ச் சேரவே இந்த விதிமுறைகள் உள்ளன. உங்கள் அருகிலுள்ள இ-சேவை மையத்தில் முழு உதவி கிடைக்கும்.`,
+      en: `I understand your question about "${query}". Government regulations exist to protect rural beneficiaries and ensure funds reach your hands. Visit your nearest center for assistance.`,
+      hi: `मैं समझ रही हूँ कि आपने "${query}" क्यों पूछा दीदी। सरकार के ये नियम भ्रष्टाचार रोकने और आप तक सीधा लाभ पहुँचाने के लिए हैं।`,
+      ml: `നിങ്ങൾ ചോദിച്ച "${query}" എന്നതിനെക്കുറിച്ച് മനസ്സിലായി ചേച്ചി. ആനുകൂല്യം കൃത്യമായി അർഹരായവരിലേക്ക് എത്താനാണ് ഈ നിബന്ധനകൾ.`,
+      te: `మీరు "${query}" గురించి అడిగిన విషయం అర్థమైంది అక్కా. సంక్షేమ సొమ్ము నేరుగా మహిళలకే అందేలా చూడటానికే ఈ నిబంధనలు ఉన్నాయి.`,
+      kn: `ನೀವು "${query}" ಎಂದು ಕೇಳಿದ ಕಾರಣ ಸ್ಪಷ್ಟವಾಗಿದೆ ಅಕ್ಕ. ಯಾವುದೇ ಮಧ್ಯವರ್ತಿಗಳಿಲ್ಲದೆ ಸೌಲಭ್ಯಗಳು ನಿಮಗೆ ಸಿಗಲು ಈ ವ್ಯವಸ್ಥೆ ಮಾಡಲಾಗಿದೆ.`,
+      mr: `तुम्ही "${query}" बद्दल विचारलेली बाब समजली ताई. मदत थेट तुमच्यापर्यंत पोहोचावी यासाठी हे नियम आहेत.`,
+      bn: `"${query}" সম্পর্কে আপনার প্রশ্নটি বুঝতে পেরেছি দিদি। সরকারি সুবিধা যাতে সরাসরি আপনার হাতে পৌঁছায়, সেজন্যই এই নিয়মগুলো করা হয়েছে।`,
+      gu: `તમે "${query}" વિશે પૂછ્યું તે હું સમજી ગઈ બહેન. સરકારી સહાય સીધી તમારા સુધી પહોંચે તે માટે આ નિયમો છે.`
+    };
+    return map[l] || map.en;
+  }
+};
+
+const StageController = {
+  getNextUndefinedDocIndex() {
+    if (!State.selectedScheme) return undefined;
+    return State.selectedScheme.requiredDocs.find(idx => State.documentStates[idx] === undefined);
+  },
+
+  getFlowMode() {
+    if (!State.selectedScheme) return 'scheme';
+    if (State.isMissingStep) return 'next';
+    return (this.getNextUndefinedDocIndex() === undefined) ? 'done' : 'ask';
+  },
+
+  selectScheme(schemeId) {
+    State.selectedScheme = GOVERNMENT_SCHEMES.find(s => s.id === schemeId);
+    State.documentStates = {};
+    State.isMissingStep = false;
+    State.missingDocIndex = null;
+    this.askNextStep();
+  },
+
+  askNextStep() {
+    State.isMissingStep = false;
+    State.missingDocIndex = null;
+    const nextIdx = this.getNextUndefinedDocIndex();
+    const locale = I18N_LOCALES[State.currentLanguage];
+
+    if (nextIdx === undefined && State.selectedScheme) {
+      const anyLacking = State.selectedScheme.requiredDocs.some(j => !State.documentStates[j]);
+      SpeechEngine.speak(anyLacking ? locale.someMissingPrompt : '🏛️ ' + locale.allReadyPrompt);
+    } else if (State.selectedScheme) {
+      SpeechEngine.speak(locale.queryPrompt.replace('{d}', locale.documents[nextIdx]));
+    }
+    this.refreshStage();
+  },
+
+  registerDocAnswer(isConfirmed) {
+    const idx = this.getNextUndefinedDocIndex();
+    State.documentStates[idx] = !!isConfirmed;
+    const locale = I18N_LOCALES[State.currentLanguage];
+
+    if (isConfirmed) {
+      State.isMissingStep = false;
+      State.missingDocIndex = null;
+      this.askNextStep();
+    } else {
+      State.isMissingStep = true;
+      State.missingDocIndex = idx;
+      const explanation = locale.missingDocNotice
+        .replace('{d}', locale.documents[idx])
+        .replace('{p}', locale.places[idx]);
+      SpeechEngine.speak(explanation);
+      this.refreshStage();
+    }
+  },
+
+  resetAll() {
+    State.selectedScheme = null;
+    State.documentStates = {};
+    State.isMissingStep = false;
+    State.missingDocIndex = null;
+    SpeechEngine.speak(I18N_LOCALES[State.currentLanguage].greeting);
+    this.refreshStage();
+  },
+
+  explainDocByIndex(index) {
+    const sampleKeywords = ['ration card', 'id card', 'bank passbook', 'photo'];
+    const text = SemanticEngine.resolveReasoning(sampleKeywords[index]);
+    SpeechEngine.speak(text);
+  },
+
+  refreshStage() {
+    const locale = I18N_LOCALES[State.currentLanguage];
+
+    document.getElementById('lbl-active-lang-nav').textContent = locale.name;
+    document.getElementById('lbl-replay-caption').textContent = locale.replay;
+    document.getElementById('lbl-schemes-header-title').textContent = locale.schemesHeader;
+
+    const pFill = document.getElementById('bar-stage-progress');
+    if (!State.selectedScheme) {
+      pFill.style.width = '18%';
+    } else {
+      const total = State.selectedScheme.requiredDocs.length;
+      const evaluated = State.selectedScheme.requiredDocs.filter(i => State.documentStates[i] !== undefined).length;
+      const pct = Math.min(100, Math.round(((evaluated + 1) / (total + 1)) * 100));
+      pFill.style.width = `${pct}%`;
+    }
+
+    const rack = document.getElementById('container-document-rack');
+    rack.innerHTML = [0, 1, 2, 3].map(i => {
+      const isExcluded = State.selectedScheme && !State.selectedScheme.requiredDocs.includes(i);
+      const isHas = State.documentStates[i] === true;
+      const isLacks = State.documentStates[i] === false;
+      const cardStateClass = isExcluded ? 'state-dimmed' : isHas ? 'state-has' : isLacks ? 'state-lacks' : '';
+      const statusGlyph = isHas ? '✅' : isLacks ? '❌' : '⬜';
+
+      return `
+        <div class="document-item-card ${cardStateClass}" onclick="StageController.explainDocByIndex(${i})">
+          ${DOCUMENT_ASSETS[i]}
+          <div class="document-caption">${locale.documents[i]}</div>
+          <div class="document-status-glyph">${statusGlyph}</div>
+        </div>
+      `;
+    }).join('');
+
+    const mapsBanner = document.getElementById('dispatch-maps-banner');
+    if (State.isMissingStep && State.missingDocIndex !== null) {
+      mapsBanner.style.display = 'flex';
+      document.getElementById('lbl-maps-directions-copy').textContent = locale.places[State.missingDocIndex];
+      const encodedQuery = encodeURIComponent(locale.mapQueries[State.missingDocIndex]);
+      document.getElementById('btn-maps-action-link').href = `https://www.google.com/maps/search/${encodedQuery}`;
+    } else {
+      mapsBanner.style.display = 'none';
+    }
+
+    const matrix = document.getElementById('container-schemes-matrix');
+    matrix.innerHTML = GOVERNMENT_SCHEMES.map(item => `
+      <div class="scheme-entry-card ${State.selectedScheme && State.selectedScheme.id === item.id ? 'active-selected' : ''}" 
+           onclick="StageController.selectScheme('${item.id}')">
+        <div class="scheme-entry-header">
+          <span class="scheme-entry-icon">${item.icon}</span>
+          <span class="scheme-entry-name">${item.title}</span>
+        </div>
+        <div class="scheme-entry-summary">${item.benefit}</div>
+      </div>
+    `).join('');
+
+    const actionContainer = document.getElementById('container-contextual-actions');
+    const mode = this.getFlowMode();
+
+    if (mode === 'scheme') {
+      actionContainer.innerHTML = `
+        <button class="duo-tactile-btn btn-choice-reset" onclick="SpeechEngine.speak(I18N_LOCALES[State.currentLanguage].greeting)">
+          👆 ${locale.selectSchemePrompt}
+        </button>
+      `;
+    } else if (mode === 'ask') {
+      actionContainer.innerHTML = `
+        <div style="display:flex; gap:10px;">
+          <button class="duo-tactile-btn btn-choice-affirm" style="flex:1;" onclick="StageController.registerDocAnswer(true)">
+            ✅ ${locale.yesBtn}
+          </button>
+          <button class="duo-tactile-btn btn-choice-negate" style="flex:1;" onclick="StageController.registerDocAnswer(false)">
+            ❌ ${locale.noBtn}
+          </button>
+        </div>
+      `;
+    } else if (mode === 'next') {
+      actionContainer.innerHTML = `
+        <button class="duo-tactile-btn btn-choice-forward" onclick="StageController.askNextStep()">
+          ➡️ ${locale.nextBtn}
+        </button>
+      `;
+    } else if (mode === 'done') {
+      actionContainer.innerHTML = `
+        <button class="duo-tactile-btn btn-choice-reset" onclick="StageController.resetAll()">
+          🔄 ${locale.restartBtn}
+        </button>
+      `;
+    }
+  }
+};
+
+function initApplication() {
+  const container = document.getElementById('container-language-tiles');
+  container.innerHTML = Object.keys(I18N_LOCALES).map(key => `
+    <div class="language-choice-card" onclick="selectLanguageAndLaunch('${key}')">
+      <div class="script-watermark-render">${I18N_LOCALES[key].scriptChar}</div>
+      <div class="language-card-meta">
+        <div class="language-avatar-badge">${I18N_LOCALES[key].scriptChar}</div>
+        <div>
+          <div class="language-label-native">${I18N_LOCALES[key].name}</div>
+          <div class="language-label-latin">${I18N_LOCALES[key].sub}</div>
+        </div>
+      </div>
+      <div class="language-card-chevron">➔</div>
+    </div>
+  `).join('');
+
+  if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+    window.speechSynthesis.onvoiceschanged = () => {
+      window.speechSynthesis.getVoices();
+    };
+  }
+}
+
+function selectLanguageAndLaunch(localeKey) {
+  State.currentLanguage = localeKey;
+  document.documentElement.lang = localeKey;
+  Router.navigate('view-stage');
+}
+
+window.addEventListener('DOMContentLoaded', initApplication);
+</script>
+</body>
+</html>
